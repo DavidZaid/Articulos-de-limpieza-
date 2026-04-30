@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaPure | Soluciones Pro de Limpieza</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary: #00b4d8;
+            --secondary: #0077b6;
+            --accent: #90e0ef;
+            --dark: #03045e;
+            --light: #f8f9fa;
+            --glass: rgba(255, 255, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #e9ecef;
+            background: linear-gradient(135deg, #caf0f8 0%, #ade8f4 100%);
+            min-height: 100vh;
+            color: var(--dark);
+        }
+
+        /* --- Header --- */
+        header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        #cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--primary);
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .hero p {
+            color: var(--secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* --- Grid de Productos --- */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 0 5% 4rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0,180,216,0.15);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: var(--accent);
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+        }
+
+        .product-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .btn-add {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            background: var(--secondary);
+            color: white;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-add:hover {
+            background: var(--dark);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--dark);
+            color: white;
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <i data-lucide="droplets"></i> AquaPure
+        </div>
+        <div class="cart-icon">
+            <i data-lucide="shopping-cart"></i>
+            <span id="cart-count">0</span>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Limpieza Nivel Profesional</h1>
+        <p>Transforma el baño de tus clientes con tecnología de desinfección avanzada y aromas premium.</p>
+    </section>
+
+    <main class="products-grid">
+        <!-- Producto 1 -->
+        <div class="product-card">
+            <div class="image-placeholder"><i data-lucide="sparkles" size="48"></i></div>
+            <h3>Desincrustante Gel Max</h3>
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Elimina sarro y manchas difíciles en segundos.</p>
+            <span class="price">$12.50</span>
+            <button class="btn-add" onclick="addToCart()">
+                <i data-lucide="plus-circle" size="18"></i> Añadir
+            </button>
+        </div>
+
+        <!-- Producto 2 -->
+        <div class="product-card">
+            <div class="image-placeholder"><i data-lucide="wind" size="48"></i></div>
+            <h3>Ambientador Ocean Breeze</h3>
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Elimina olores de raíz con tecnología de ozono.</p>
+            <span class="price">$8.99</span>
+            <button class="btn-add" onclick="addToCart()">
+                <i data-lucide="plus-circle" size="18"></i> Añadir
+            </button>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="product-card">
+            <div class="image-placeholder"><i data-lucide="shield-check" size="48"></i></div>
+            <h3>Pack Desinfectante Viral</h3>
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Elimina el 99.9% de bacterias y virus.</p>
+            <span class="price">$24.00</span>
+            <button class="btn-add" onclick="addToCart()">
+                <i data-lucide="plus-circle" size="18"></i> Añadir
+            </button>
+        </div>
+
+        <!-- Producto 4 -->
+        <div class="product-card">
+            <div class="image-placeholder"><i data-lucide="waves" size="48"></i></div>
+            <h3>Limpiavidrios Anti-Vaho</h3>
+            <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Espejos impecables que no se empañan.</p>
+            <span class="price">$10.25</span>
+            <button class="btn-add" onclick="addToCart()">
+                <i data-lucide="plus-circle" size="18"></i> Añadir
+            </button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 AquaPure Solutions - Presentación para Cliente</p>
+    </footer>
+
+    <script>
+        // Inicializar Iconos
+        lucide.createIcons();
+
+        // Lógica simple de carrito
+        let count = 0;
+        function addToCart() {
+            count++;
+            document.getElementById('cart-count').innerText = count;
+            
+            // Efecto visual simple
+            const btn = event.currentTarget;
+            btn.style.background = '#7bc8a4';
+            btn.innerHTML = '<i data-lucide="check"></i> Agregado';
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                btn.style.background = '#0077b6';
+                btn.innerHTML = '<i data-lucide="plus-circle" size="18"></i> Añadir';
+                lucide.createIcons();
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
