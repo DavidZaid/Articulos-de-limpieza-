@@ -3,265 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaPure | Soluciones Pro de Limpieza</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Lucide Icons -->
+    <title>LUX-CLEAN | Premium Bathroom Care</title>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #00b4d8;
-            --secondary: #0077b6;
-            --accent: #90e0ef;
-            --dark: #03045e;
-            --light: #f8f9fa;
-            --glass: rgba(255, 255, 255, 0.2);
+            --accent: #00f2ff;
+            --primary: #0a84ff;
+            --dark-bg: #050505;
+            --card-bg: #121212;
+            --text: #ffffff;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background-color: #e9ecef;
-            background: linear-gradient(135deg, #caf0f8 0%, #ade8f4 100%);
-            min-height: 100vh;
-            color: var(--dark);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text);
+            overflow-x: hidden;
         }
 
-        /* --- Header --- */
-        header {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 1rem 5%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        /* --- Estilo Pro de Navegación --- */
+        nav {
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
-        .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--secondary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .brand {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .cart-icon {
-            position: relative;
-            cursor: pointer;
-        }
-
-        #cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background: var(--primary);
-            color: white;
-            font-size: 0.7rem;
-            padding: 2px 6px;
-            border-radius: 50%;
-        }
-
-        /* --- Hero Section --- */
+        /* --- Hero High-Impact --- */
         .hero {
-            padding: 4rem 5%;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            background: radial-gradient(circle at center, #112233 0%, #050505 100%);
+            padding: 0 20px;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            line-height: 0.9;
+            margin-bottom: 20px;
+            text-transform: uppercase;
         }
 
         .hero p {
-            color: var(--secondary);
+            color: #888;
             max-width: 600px;
-            margin: 0 auto 2rem;
+            font-size: 1.1rem;
         }
 
         /* --- Grid de Productos --- */
-        .products-grid {
+        .container {
+            padding: 50px 5%;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            padding: 0 5% 4rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
         }
 
-        .product-card {
-            background: white;
-            border-radius: 20px;
-            padding: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0,132,255,0.2);
+        }
+
+        .img-container {
+            width: 100%;
+            height: 250px;
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.3);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
         }
 
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 30px rgba(0,180,216,0.15);
-        }
-
-        .image-placeholder {
+        .img-container img {
             width: 100%;
-            height: 200px;
-            background: var(--accent);
-            border-radius: 15px;
-            margin-bottom: 1rem;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .card:hover img { transform: scale(1.1); }
+
+        .tag {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .card h3 { font-size: 1.4rem; margin-bottom: 10px; }
+
+        .price-row {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            color: var(--secondary);
+            margin-top: 20px;
         }
 
-        .product-card h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
+        .price { font-size: 1.8rem; font-weight: 800; color: var(--accent); }
 
-        .price {
-            font-weight: 700;
-            font-size: 1.4rem;
-            color: var(--primary);
-            display: block;
-            margin-bottom: 1rem;
-        }
-
-        .btn-add {
-            width: 100%;
-            padding: 0.8rem;
+        .buy-btn {
+            background: white;
+            color: black;
             border: none;
-            background: var(--secondary);
-            color: white;
+            padding: 12px 25px;
             border-radius: 12px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
-            transition: background 0.3s;
             display: flex;
-            justify-content: center;
             align-items: center;
             gap: 8px;
         }
 
-        .btn-add:hover {
-            background: var(--dark);
+        .buy-btn:hover { background: var(--accent); }
+
+        /* Animación de entrada */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background: var(--dark);
-            color: white;
-            margin-top: 2rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-        }
+        .card { animation: fadeInUp 0.6s ease backwards; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">
-            <i data-lucide="droplets"></i> AquaPure
+    <nav>
+        <div class="brand">LUX-CLEAN</div>
+        <div style="display: flex; gap: 20px;">
+            <i data-lucide="search" style="cursor:pointer"></i>
+            <div style="position: relative;">
+                <i data-lucide="shopping-bag" style="cursor:pointer"></i>
+                <span style="position:absolute; top:-8px; right:-8px; background:red; font-size:10px; padding:2px 5px; border-radius:50%">3</span>
+            </div>
         </div>
-        <div class="cart-icon">
-            <i data-lucide="shopping-cart"></i>
-            <span id="cart-count">0</span>
-        </div>
-    </header>
+    </nav>
 
     <section class="hero">
-        <h1>Limpieza Nivel Profesional</h1>
-        <p>Transforma el baño de tus clientes con tecnología de desinfección avanzada y aromas premium.</p>
+        <h1>BEYOND CLEAN.</h1>
+        <p>Soluciones de grado industrial para espacios que exigen perfección. Higiene molecular y fragancias de lujo.</p>
     </section>
 
-    <main class="products-grid">
+    <div class="container">
         <!-- Producto 1 -->
-        <div class="product-card">
-            <div class="image-placeholder"><i data-lucide="sparkles" size="48"></i></div>
-            <h3>Desincrustante Gel Max</h3>
-            <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Elimina sarro y manchas difíciles en segundos.</p>
-            <span class="price">$12.50</span>
-            <button class="btn-add" onclick="addToCart()">
-                <i data-lucide="plus-circle" size="18"></i> Añadir
-            </button>
+        <div class="card" style="animation-delay: 0.1s;">
+            <div class="tag">TOP VENTAS</div>
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=600" alt="Limpiador">
+            </div>
+            <h3>Crystal Clear Pro</h3>
+            <p style="color: #666;">Fórmula de nanotecnología para superficies de mármol y cerámica.</p>
+            <div class="price-row">
+                <span class="price">$29.99</span>
+                <button class="buy-btn"><i data-lucide="zap" size="18"></i> Comprar</button>
+            </div>
         </div>
 
         <!-- Producto 2 -->
-        <div class="product-card">
-            <div class="image-placeholder"><i data-lucide="wind" size="48"></i></div>
-            <h3>Ambientador Ocean Breeze</h3>
-            <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Elimina olores de raíz con tecnología de ozono.</p>
-            <span class="price">$8.99</span>
-            <button class="btn-add" onclick="addToCart()">
-                <i data-lucide="plus-circle" size="18"></i> Añadir
-            </button>
+        <div class="card" style="animation-delay: 0.2s;">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&q=80&w=600" alt="Spray">
+            </div>
+            <h3>Ozone Mist</h3>
+            <p style="color: #666;">Neutralizador de aire con base de aceites esenciales cítricos.</p>
+            <div class="price-row">
+                <span class="price">$15.50</span>
+                <button class="buy-btn"><i data-lucide="zap" size="18"></i> Comprar</button>
+            </div>
         </div>
 
         <!-- Producto 3 -->
-        <div class="product-card">
-            <div class="image-placeholder"><i data-lucide="shield-check" size="48"></i></div>
-            <h3>Pack Desinfectante Viral</h3>
-            <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Elimina el 99.9% de bacterias y virus.</p>
-            <span class="price">$24.00</span>
-            <button class="btn-add" onclick="addToCart()">
-                <i data-lucide="plus-circle" size="18"></i> Añadir
-            </button>
+        <div class="card" style="animation-delay: 0.3s;">
+            <div class="tag" style="background:#ff3b30">-20% HOY</div>
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1585060544812-6b4590403301?auto=format&fit=crop&q=80&w=600" alt="Gel">
+            </div>
+            <h3>Deep Clean Gel</h3>
+            <p style="color: #666;">Desinfectante de acción rápida contra sarro y moho extremo.</p>
+            <div class="price-row">
+                <span class="price">$19.00</span>
+                <button class="buy-btn"><i data-lucide="zap" size="18"></i> Comprar</button>
+            </div>
         </div>
+    </div>
 
-        <!-- Producto 4 -->
-        <div class="product-card">
-            <div class="image-placeholder"><i data-lucide="waves" size="48"></i></div>
-            <h3>Limpiavidrios Anti-Vaho</h3>
-            <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">Espejos impecables que no se empañan.</p>
-            <span class="price">$10.25</span>
-            <button class="btn-add" onclick="addToCart()">
-                <i data-lucide="plus-circle" size="18"></i> Añadir
-            </button>
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 AquaPure Solutions - Presentación para Cliente</p>
+    <footer style="padding: 50px 5%; text-align: center; border-top: 1px solid #222; margin-top: 50px; color: #444;">
+        <p>&copy; 2026 LUX-CLEAN S.A. | High Performance Standards</p>
     </footer>
 
     <script>
-        // Inicializar Iconos
+        // Inicializar iconos de Lucide
         lucide.createIcons();
 
-        // Lógica simple de carrito
-        let count = 0;
-        function addToCart() {
-            count++;
-            document.getElementById('cart-count').innerText = count;
-            
-            // Efecto visual simple
-            const btn = event.currentTarget;
-            btn.style.background = '#7bc8a4';
-            btn.innerHTML = '<i data-lucide="check"></i> Agregado';
-            lucide.createIcons();
-            
-            setTimeout(() => {
-                btn.style.background = '#0077b6';
-                btn.innerHTML = '<i data-lucide="plus-circle" size="18"></i> Añadir';
-                lucide.createIcons();
-            }, 1000);
-        }
+        // Pequeño efecto de interactividad en los botones
+        document.querySelectorAll('.buy-btn').forEach(btn => {
+            btn.onclick = () => {
+                btn.style.transform = 'scale(0.95)';
+                setTimeout(() => btn.style.transform = 'scale(1)', 100);
+                alert('¡Añadido al carrito premium!');
+            };
+        });
     </script>
 </body>
 </html>
